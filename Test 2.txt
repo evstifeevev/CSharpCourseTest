@@ -1,0 +1,36 @@
+set encoding utf8
+set font 'Times-New-Roman,12'
+set multiplot layout 1,2
+set style data lines #Стиль отображения данных - линии
+set border 3
+set xtics nomirror font 'Times-New-Roman,10' norotate
+set ytics nomirror font 'Times-New-Roman,10' norotate
+#Выведем оси, проходящие через нулевую точку
+
+#Вывод из файла problem21.dat функции и ее производных на график
+
+set xlabel "{/Symbol e}"  
+set ylabel "{/Symbol L}_i" 
+set key out right
+#set size 1.0,0.4
+#set origin 0.0,0.66
+#set title 'The second system is dependent'
+
+
+	
+	while(1){
+	#set xrange[0.0: 0.25]
+	unset yrange
+	unset xrange
+#set yrange[-0.5: 0.1]
+set title "Spectrum of Lyapunov's exponents"
+	plot 'noiseEps.txt' u 2:1 lt rgb 'dark-green' t '{/Symbol e}_2'
+set title "The auxiliary system's approach"
+set ylabel "d" norotate
+unset yrange
+	plot 'eps_aux.txt' u 1:2 lt rgb 'dark-red' t '<|x_1-x_2|>'
+
+pause 100
+clear
+clear
+}
